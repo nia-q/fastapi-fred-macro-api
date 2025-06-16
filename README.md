@@ -22,6 +22,8 @@ uvicorn app.main:app --reload
 ### Testing endpoints with curl
 ```bash
 curl http://127.0.0.1:8000/macro/indicator/CPIAUCSL
+curl "http://127.0.0.1:8000/macro/trend/CPIAUCSL?months=12"
+
 ```
 
 ### Git Setup Instructions
