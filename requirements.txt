@@ -3,3 +3,5 @@ uvicorn
 httpx
 python-dotenv
 pytest
+python-dateutil>=2.8.2
+

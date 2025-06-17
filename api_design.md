@@ -3,7 +3,7 @@
 
 This API simplifies and transforms economic data from the Federal Reserve’s FRED API into actionable insights for use in investment analysis, trading dashboards, and economic modeling.
 
----
+
 
 ### 🔹 `GET /macro/indicator/{series_id}` (added)
 
@@ -25,7 +25,7 @@ The direction of movement (up/down) is often more meaningful than a raw number. 
 
 ---
 
-### 🔹 `GET /macro/compare?series=CPIAUCSL,UNRATE`
+### 🔹 `GET /macro/compare?series=CPIAUCSL,UNRATE` (added)
 
 **What it does**:
 Returns side-by-side values and trends for multiple macro indicators.
@@ -65,4 +65,4 @@ Understanding macro shifts around major events is critical for backtesting, rese
 
 ---
 
-Let me know if you want this formatted into a downloadable `.md` file or added to your actual project `README.md`.
+
