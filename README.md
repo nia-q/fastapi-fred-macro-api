@@ -1,5 +1,13 @@
 
 
+📦 quant api
+ ┣ 📂 app
+ ┃ ┣ 📂 api           → Route definitions (entrypoints)
+ ┃ ┣ 📂 services      → Business logic (calculations, orchestration)
+ ┃ ┣ 📂 clients       → External API fetchers (FRED)
+ ┃ ┣ 📂 models        → Pydantic models
+ ┃ ┗ 📜 main.py       → FastAPI app instance
+
 
 
 ## 📊 FRED Macro API – Endpoint Summary & Purpose
@@ -70,6 +78,28 @@ Understanding macro shifts around major events is critical for backtesting, rese
 
 
 
+### Testing endpoints with curl
+```bash
+curl http://127.0.0.1:8000/macro/indicator/CPIAUCSL
+curl "http://127.0.0.1:8000/macro/trend/CPIAUCSL?months=12"
+curl http://127.0.0.1:8000/macro/summary
+curl "http://127.0.0.1:8000/macro/compare?series_ids=CPIAUCSL,UNRATE&months=12"
+curl "http://127.0.0.1:8000/macro/regime?series_ids=CPIAUCSL,UNRATE&months=12"
+curl http://127.0.0.1:8000/macro/regime
+curl -X POST http://127.0.0.1:8000/macro/event-impact \
+  -H "Content-Type: application/json" \
+  -d '{
+    "series_ids": ["CPIAUCSL", "UNRATE"],
+    "event_date": "2020-03-01",
+    "months_before": 6,
+    "months_after": 6
+}'
+
+
+
+```
+
+
 ## Env Set Up
 
 #### Create virtual environment (first time only)
@@ -93,26 +123,6 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-#### Testing endpoints with curl
-```bash
-curl http://127.0.0.1:8000/macro/indicator/CPIAUCSL
-curl "http://127.0.0.1:8000/macro/trend/CPIAUCSL?months=12"
-curl http://127.0.0.1:8000/macro/summary
-curl "http://127.0.0.1:8000/macro/compare?series_ids=CPIAUCSL,UNRATE&months=12"
-curl "http://127.0.0.1:8000/macro/regime?series_ids=CPIAUCSL,UNRATE&months=12"
-curl http://127.0.0.1:8000/macro/regime
-curl -X POST http://127.0.0.1:8000/macro/event-impact \
-  -H "Content-Type: application/json" \
-  -d '{
-    "series_ids": ["CPIAUCSL", "UNRATE"],
-    "event_date": "2020-03-01",
-    "months_before": 6,
-    "months_after": 6
-}'
-
-
-
-```
 
 ## Git Setup Instructions
 
